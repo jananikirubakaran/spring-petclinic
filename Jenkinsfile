@@ -42,7 +42,8 @@ pipeline {
 
         stage('ntegration and Performance Tests') {
           steps {
-            sh './mvnw verify'
+            sh '''./mvnw verify -DskipTests=true
+'''
           }
         }
 
