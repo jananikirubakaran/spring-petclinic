@@ -26,5 +26,23 @@ pipeline {
       }
     }
 
+    stage('Delpoy') {
+      parallel {
+        stage('Delpoy') {
+          steps {
+            sh '''./mvnw spring-boot:run </dev/null &>/dev/null &
+'''
+          }
+        }
+
+        stage('ntegration and Performance Tests') {
+          steps {
+            sh './mvnw verify'
+          }
+        }
+
+      }
+    }
+
   }
 }
