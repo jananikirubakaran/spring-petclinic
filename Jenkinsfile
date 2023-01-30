@@ -40,10 +40,10 @@ pipeline {
           }
         }
 
-        stage('ntegration and Performance Tests') {
+        stage('Integration and Performance Tests') {
           steps {
-            sh '''./mvnw verify -DskipTests=true
-'''
+            sh './mvnw verify'
+            junit '**/target/surefire-reports/TEST-*.xml'
           }
         }
 
