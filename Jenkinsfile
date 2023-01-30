@@ -1,5 +1,10 @@
 pipeline {
-  agent any
+  agent {
+    node {
+      label 'test'
+    }
+
+  }
   stages {
     stage('Compile') {
       steps {
@@ -26,7 +31,7 @@ pipeline {
       }
     }
 
-    stage('Delpoy') {
+    stage('QA') {
       parallel {
         stage('Delpoy') {
           steps {
